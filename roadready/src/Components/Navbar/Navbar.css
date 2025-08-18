@@ -1,0 +1,8 @@
+.navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+.navbar-brand { font-size:1.3rem; color:#1a202c !important; }
+.navbar .nav-link { margin-left:12px; font-weight:500; color:#4a5568 !important; transition:color .2s; }
+.navbar .nav-link.active { color:#166534 !important; }
+.navbar .nav-link:hover { color:#14532d !important; }
+.rr-link-btn { color:#1f2937 !important; }
+.btn-success { background:#166534; border-color:#166534; }
+.btn-success:hover { background:#14532d; border-color:#14532d; }
