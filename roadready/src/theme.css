@@ -1,0 +1,22 @@
+:root{
+  --bg:#0b0b10; --bg-soft:#0f1117;
+  --card:#ffffff; --ink:#0f172a; --muted:#64748b;
+  --brand:#4f46e5; --brand-2:#2563eb; --danger:#ef4444;
+  --radius:14px; --shadow:0 12px 35px rgba(2,8,20,.08);
+}
+body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:#f6f8fc; }
+.container{ max-width:1152px; margin:0 auto; padding:24px 16px; }
+
+/* Navbar */
+.navbar{ background:var(--bg); color:#fff; display:flex; align-items:center; gap:16px; padding:10px 16px; }
+.navbar a{ color:#fff; text-decoration:none; opacity:.9; }
+.navbar a:hover{ opacity:1; }
+.brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+.brand img{ height:28px; }
+
+/* Common */
+.card{ background:var(--card); border:1px solid #e6eaf3; border-radius:var(--radius); box-shadow:var(--shadow); }
+.btn-primary{ background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:#fff; border:0; border-radius:12px; padding:10px 14px; font-weight:700; }
+.btn-outline{ background:#fff; border:1px solid #d8dee9; color:var(--ink); border-radius:10px; padding:9px 12px; }
+.muted{ color:var(--muted); }
+.alert{ background:#fef2f2; border:1px solid #fecaca; color:#b91c1c; padding:8px 12px; border-radius:10px; }

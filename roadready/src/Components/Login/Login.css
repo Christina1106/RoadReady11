@@ -1,8 +1,198 @@
-.rr-hero { padding-top:56px; padding-bottom:56px; }
-.rr-tabs { width:100%; max-width:560px; }
-.rr-tab { flex:1; background:#f7fafc; border:1px solid #e2e8f0; border-radius:10px; padding:10px 14px; font-weight:600; color:#2d3748; transition:background .2s, box-shadow .2s; }
-.rr-tab.active { background:#fff; border-color:#a0aec0; box-shadow:0 1px 2px rgba(0,0,0,0.05); }
-.rr-card { width:100%; max-width:560px; border:1px solid #edf2f7; border-radius:14px; background:#fff; }
-.form-control { height:44px; }
-.btn-success { background:#166534; border-color:#166534; }
-.btn-success:hover { background:#14532d; border-color:#14532d; }
+/* ===== Theme tokens (keep yours if you like) ===== */
+:root{
+  --brand:#2563eb;
+  --brand-2:#1d4ed8;
+  --bg:#f7f9fc;
+  --panel:#fff;
+  --text-900:#0f172a;
+  --text-700:#374151;
+  --text-600:#475569;
+  --text-500:#6b7280;
+  --border:#e5e7eb;
+  --ring:0 0 0 3px rgba(37,99,235,.18);
+  --radius:16px;
+  --shadow-lg:0 24px 54px -24px rgba(16,24,40,.28);
+  --shadow-sm:0 10px 28px -22px rgba(16,24,40,.22);
+}
+
+/* ===== Page background (center everything) ===== */
+.login-bg{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 16px;
+  background:
+    radial-gradient(60rem 60rem at -10% -30%, #e5e9ff 12%, transparent 36%),
+    radial-gradient(60rem 60rem at 120% 120%, #dbeafe 12%, transparent 40%),
+    var(--bg);
+}
+
+/* ===== Card: fixed max width, centered ===== */
+.login-card{
+  max-width:520px;
+  width:100%;
+  margin:0 auto;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);
+  padding:26px 28px 24px;
+}
+
+/* Header */
+.card-head{ text-align:center; margin-bottom:12px; }
+.crest{
+  width:44px;height:44px;margin:0 auto 8px;
+  border-radius:999px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#eff6ff,#e0e7ff);
+  border:1px solid #e5ecff;color:#1e3a8a;
+}
+.brand-title{
+  margin:0;
+  font-weight:800;
+  letter-spacing:.2px;
+  font-size:clamp(22px,2.8vw,28px);
+  color:var(--text-900);
+}
+.sub{ margin:6px 0 2px; color:var(--text-500); font-size:14px; }
+
+/* ===== Form layout ===== */
+.login-card form{ display:grid; gap:16px; }
+.field{ display:flex; flex-direction:column; gap:6px; margin:0; }
+.field>label{ color:var(--text-700); font-weight:600; font-size:14px; }
+
+/* Inputs with icons — keeps text clear of the icon */
+.input-wrap{ position:relative; display:flex; align-items:center; }
+.icon{
+  position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  width:20px;height:20px;color:#9ca3af; pointer-events:none;
+}
+.input{
+  height:48px; width:100%;
+  border:1px solid var(--border); border-radius:12px;
+  padding:0 44px 0 52px;
+  font-size:15px; color:var(--text-900);
+  background:#fff;
+  transition:border-color .15s ease, box-shadow .15s ease, background .2s ease;
+}
+.input::placeholder{ color:#94a3b8; }
+.input:focus{ outline:none; border-color:#3b82f6; box-shadow:0 0 0 2px rgba(59,130,246,.18); }
+
+/* Show/Hide password button */
+.pw-toggle{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:36px;height:36px; display:grid; place-items:center;
+  border:none; background:transparent; border-radius:10px; color:#6b7280; cursor:pointer;
+}
+.pw-toggle:hover{ background:#f3f4f6; }
+.pw-toggle:focus-visible{ outline:none; box-shadow:var(--ring); }
+
+/* Remember + forgot row */
+.row-actions{ display:flex; align-items:center; gap:12px; }
+.row-actions .spacer{ flex:1; }
+.remember{ display:inline-flex; align-items:center; gap:8px; color:var(--text-600); }
+.remember input{ width:16px;height:16px; accent-color:var(--brand); }
+
+.link{ color:var(--brand); text-decoration:none; font-weight:600; }
+.link:hover{ text-decoration:underline; }
+.small{ font-size:13px; }
+.muted{ color:var(--text-500); }
+
+/* Error surface */
+.alert{
+  border:1px solid #fecaca; background:#fff1f2; color:#991b1b;
+  padding:10px 12px; border-radius:12px; font-size:14px;
+}
+
+/* ===== Primary button (Login submit) ===== */
+.btn-primary{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  height:48px;
+  width:100%;
+  border-radius:12px;
+  border:1px solid transparent;
+  color:#fff;
+  font-weight:800;
+  letter-spacing:.2px;
+  background:linear-gradient(135deg,#4f46e5,#2563eb);
+  box-shadow:0 6px 16px rgba(37,99,235,.25);
+  transition:transform .12s ease, filter .18s ease, box-shadow .18s ease;
+  cursor:pointer;
+  overflow:hidden;
+}
+/* subtle shine */
+.btn-primary::after{
+  content:"";
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25),transparent 70%);
+  transform:translateX(-100%);
+  transition:transform .7s ease;
+}
+.btn-primary:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.03);
+  box-shadow:0 8px 20px rgba(37,99,235,.35);
+}
+.btn-primary:hover::after{ transform:translateX(0); }
+.btn-primary:active{
+  transform:translateY(0);
+  box-shadow:0 4px 12px rgba(37,99,235,.20);
+}
+.btn-primary:disabled,
+.btn-primary.is-loading{
+  opacity:.75;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:0 6px 16px rgba(37,99,235,.15);
+}
+.btn-primary:focus-visible{
+  outline:none;
+  box-shadow:
+    0 0 0 3px rgba(37,99,235,.22),
+    0 6px 16px rgba(37,99,235,.25);
+}
+/* loader icon inside button */
+.btn-primary .spin{
+  margin-right:8px;
+  animation:spin .9s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+/* utility if you use it in JSX */
+.w-100{ width:100%; }
+
+/* Tiny screens: stack the row neatly */
+@media (max-width:480px){
+  .row-actions{ flex-wrap:wrap; }
+}
+
+/* --- Input internals: spacing + perfect centering --- */
+/* keep text/caret clear of the left mail/lock icon and right eye button */
+.login-card .input{
+  padding-left: 60px !important;
+  padding-right: 56px !important;
+  font-size: 16px;
+}
+/* center the icons precisely */
+.login-card .input-wrap .icon{
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+/* center the show/hide password button */
+.login-card .pw-toggle{
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* optional: hide Edge's native reveal icon to avoid double eyes */
+.login-card input::-ms-reveal { display: none; }

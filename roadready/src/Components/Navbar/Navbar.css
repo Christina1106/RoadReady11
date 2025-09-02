@@ -1,8 +1,76 @@
-.navbar { box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
-.navbar-brand { font-size:1.3rem; color:#1a202c !important; }
-.navbar .nav-link { margin-left:12px; font-weight:500; color:#4a5568 !important; transition:color .2s; }
-.navbar .nav-link.active { color:#166534 !important; }
-.navbar .nav-link:hover { color:#14532d !important; }
-.rr-link-btn { color:#1f2937 !important; }
-.btn-success { background:#166534; border-color:#166534; }
-.btn-success:hover { background:#14532d; border-color:#14532d; }
+/* Core nav spacing */
+.rr-navbar .nav-link { padding:.55rem .95rem; font-weight:600; color:#0f172a; }
+.rr-navbar .nav-link:hover { color:#1d4ed8; }
+.rr-navbar .nav-link.active { color:#1d4ed8; font-weight:800; }
+
+/* Brand */
+.rr-logo-wrap{ color:#0f172a; display:grid; place-items:center; }
+.navbar-brand { letter-spacing:.2px; }
+
+/* Pill buttons on the right */
+.rr-navbar .btn{
+  white-space:nowrap;                 /* keeps “Sign Up” on one line */
+  padding:.45rem 1rem;
+  border-radius:999px;
+  font-weight:700;
+}
+.rr-navbar .btn-primary{
+  background:linear-gradient(135deg,#4f46e5,#1d4ed8);
+  border:0;
+}
+.rr-navbar .btn-outline-primary{
+  border-color:#4f46e5;
+  color:#4f46e5;
+}
+.rr-navbar .btn-outline-primary:hover{
+  background:#eef2ff;
+}
+
+/* Toggler focus */
+.rr-navbar .navbar-toggler:focus{
+  box-shadow:0 0 0 2px rgba(37,99,235,.25);
+}
+
+
+/* --- Auth buttons in the header (Login / Sign Up) --- */
+/* Works even if the JSX still uses generic .btn classes. Keep these last in the file. */
+
+.rr-navbar a[href="/signup"],
+.rr-navbar a[href="/SignUp"]{
+  /* Sign Up = solid gradient */
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.55rem 1.1rem; border-radius:999px; font-weight:800; line-height:1;
+  background: linear-gradient(135deg,#4f46e5,#2563eb);
+  color:#fff !important;                 /* ensure white label */
+  border:0;
+  box-shadow: 0 8px 20px rgba(37,99,235,.25);
+  text-decoration:none;
+}
+.rr-navbar a[href="/signup"]:hover,
+.rr-navbar a[href="/SignUp"]:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+/* Login = outlined pill with gradient border */
+.rr-navbar a[href="/login"],
+.rr-navbar a[href="/Login"]{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.55rem 1.1rem; border-radius:999px; font-weight:800; line-height:1;
+  background:
+    linear-gradient(#ffffff,#ffffff) padding-box,
+    linear-gradient(135deg,#4f46e5,#2563eb) border-box;   /* gradient border */
+  border: 2px solid transparent;
+  color:#1d4ed8 !important;               /* readable blue text */
+  box-shadow: 0 4px 14px rgba(18,38,63,.06);
+  text-decoration:none;
+}
+.rr-navbar a[href="/login"]:hover,
+.rr-navbar a[href="/Login"]:hover{
+  background:
+    linear-gradient(#f8fafc,#f8fafc) padding-box,
+    linear-gradient(135deg,#4f46e5,#2563eb) border-box;
+  transform: translateY(-1px);
+}
+
+/* Optional: keep your existing generic button styles for everything else */
